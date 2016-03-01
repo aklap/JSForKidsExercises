@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Interactive programming</title>
+</head>
+
+<!-- Animate an HTML element using a js script
+ -->	<body>
+		<h1 id="heading">Hello world!</h1>
+
+		<!-- get access to jquery library using a script tag -->
+		<script src="https://code.jquery.com/jquery-2.1.0.js"></script>
+		<!-- Open console in browser to see the script output correctly!! -->
+		<script>
+			var clickHandler = function (event) {
+				// output the string plus the x and y coordinates of where you clicked on the page
+				console.log("Click!" + event.pageX + " " + event.pageY);
+			};
+
+			$("h1").on('click', clickHandler);
+		</script>
+</body>
+</html>

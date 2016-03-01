@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Interactive programming</title>
+</head>
+
+<!-- Animate an HTML element using a js script -->
+<body>
+	<h1 id="heading">Hello world!</h1>
+
+	<!-- get access to jquery library using a script tag -->
+	<script src="https://code.jquery.com/jquery-2.1.0.js"></script>
+	<!-- Open console in browser to see the script output correctly!! -->
+	<script>
+		// when you move your mouse over the document, your heading element coordinates will be set to that of the coordinates of your mouse, and give the effect of the text following your mouse
+		// $("html").mousemove(function (event) {
+		// 	$("#heading").offset({ left: event.pageX, top: event.pageY });
+		// });
+		function sqMove(){
+			$("html").click(function (event) {
+				$("#heading").offset({ left: event.pageX, top: event.pageY });
+			});
+		};
+			setInterval(sqMove, 30);
+	</script>
+</body>
+</html>

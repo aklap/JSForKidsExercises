@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Interactive programming</title>
+</head>
+
+<!-- Animate an HTML element using a js script
+ -->	<body>
+		<h1 id="heading">Hello world!</h1>
+
+		<!-- get access to jquery library using a script tag -->
+		<script src="https://code.jquery.com/jquery-2.1.0.js"></script>
+		<!-- below is the script that will animate our text -->
+		<script>
+		var leftOffset = 0;
+		// this function will call a method called offset on a specific html element using a css selector
+		var moveHeading = function () {
+			// offset is a method that can be called on an element to offset it relative to the document. It can take a top and/or a left argument alone or as a set of coordinates, or another function, or nothing at all.
+			$("#heading").offset({ left: leftOffset });
+
+		leftOffset++;
+		//keep adding 1 to the var until you hit 200px offset from the left of the document then reset position
+		if (leftOffset > 200) {
+			leftOffset = 0;
+		};
+	}
+	//call the above function every 30 miliseconds.
+	setInterval(moveHeading, 30);	
+		</script>
+</body>
+</html>

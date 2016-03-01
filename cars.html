@@ -4,86 +4,86 @@
 	<title>Cars</title>
 </head>
 <body>
-	<!-- jQuery -->
+<!-- jQuery -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
 
-	<!-- Draw cars objects -->
+<!-- Draw cars objects -->
 	<script>
-//Car constructor function
-	var Car = function (x, y) {
-		this.x = x;
-		this.y = y;
-		this.draw();
-		this.speed = 5;
-	};
+		//Car constructor function
+		var Car = function (x, y) {
+			this.x = x;
+			this.y = y;
+			this.draw();
+			this.speed = 5;
+		};
 
-//car objects inherit the following methods to draw and move in 4 directions
+		//car objects inherit the following methods to draw and move in 4 directions
 
-//draw car and append to body
-	Car.prototype.draw = function () {
-		var carHTML = '<img src="car.png">';
+		//draw car and append to body
+		Car.prototype.draw = function () {
+			var carHTML = '<img src="car.png">';
 
-		this.carElement = $(carHTML);
+			this.carElement = $(carHTML);
 
-		this.carElement.css({
-			position: "absolute",
-			left: this.x,
-			top: this.y
-		});
+			this.carElement.css({
+				position: "absolute",
+				left: this.x,
+				top: this.y
+			});
 
-		$("body").append(this.carElement);
-	};
+			$("body").append(this.carElement);
+		};
 
-//move car a given distance to the right
-	Car.prototype.moveRight = function (distance) {
-		this.speed += distance;
+		//move car a given distance to the right
+		Car.prototype.moveRight = function (distance) {
+			this.speed += distance;
 
-		this.carElement.css({
-			left: this.speed,
-			top: this.y
-		});
-	};
+			this.carElement.css({
+				left: this.speed,
+				top: this.y
+			});
+		};
 
-//move car a given distance to the left
-	Car.prototype.moveLeft = function (distance) {
-		this.speed -= distance;
+		//move car a given distance to the left
+		Car.prototype.moveLeft = function (distance) {
+			this.speed -= distance;
 
-		this.carElement.css({
-			left: this.speed, 
-			top: this.y
-		});
-	};
+			this.carElement.css({
+				left: this.speed, 
+				top: this.y
+			});
+		};
 
-//move car a given distance up
-	Car.prototype.moveUp = function (distance) {
-		this.speed -= distance;
+		//move car a given distance up
+		Car.prototype.moveUp = function (distance) {
+			this.speed -= distance;
 
-		this.carElement.css({
-			left: this.x,
-			top: this.speed
-		});
-	};
+			this.carElement.css({
+				left: this.x,
+				top: this.speed
+			});
+		};
 
-//move car a given distance down
-	Car.prototype.moveDown = function (distance) {
-		this.speed +=distance;
+		//move car a given distance down
+		Car.prototype.moveDown = function (distance) {
+			this.speed +=distance;
 
-		this.carElement.css({
-			left: this.x,
-			top: this.speed
-		});
-	};
+			this.carElement.css({
+				left: this.x,
+				top: this.speed
+			});
+		};
 
-//create our two car objects at diff positions on page
-	var tesla = new Car(20, 20);
-	var nissan = new Car(100, 200);
+		//create our two car objects at diff positions on page
+		var tesla = new Car(20, 20);
+		var nissan = new Car(100, 200);
 
-//race cars by giving a random distance/speed property
-//setInterval needs a callback function as the first arg!! Otherwise returns undefined
-	setInterval(function () {
-		tesla.moveRight(Math.floor(Math.random()*10)+1);
-		nissan.moveRight(Math.floor(Math.random()*10)+1);
-	}, 30);
+		//race cars by giving a random distance/speed property
+		//setInterval needs a callback function as the first arg!! Otherwise returns undefined
+		setInterval(function () {
+			tesla.moveRight(Math.floor(Math.random()*10)+1);
+			nissan.moveRight(Math.floor(Math.random()*10)+1);
+			}, 30);
 	</script>
 </body>
 </html>

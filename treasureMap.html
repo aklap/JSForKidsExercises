@@ -12,69 +12,68 @@
 <!-- 	show how many clicks you have left before game over-->
 	<p id="clicksLeft"></p>
 
-
 	<script src="https://code.jquery.com/jquery-2.1.0.js"></script>
 
 	<script>
-	//Assign a random x and y coordinate for our treasure target
-	var getRandomNumber = function (size) {
-		return Math.floor(Math.random() * size);
-	};
+//Assign a random x and y coordinate for our treasure target
+		var getRandomNumber = function (size) {
+			return Math.floor(Math.random() * size);
+		};
 
-//Use the pythagorean theorem to find distance to our target from our click; our legs are the x and y coordinates
-	var getDistance = function (event, target) {
-		var diffX = event.offsetX - target.x;
-		var diffY = event.offsetY - target.y;
-		return Math.sqrt((diffX * diffX) + (diffY * diffY));
-	};
-//Return the appropriate clue as string depending on how far our click  is from the treasure target
-//change to case statements...
-	var getDistanceHint = function (distance) {
-		if (distance < 0) {
+	//Use the pythagorean theorem to find distance to our target from our click; our legs are the x and y coordinates
+		var getDistance = function (event, target) {
+			var diffX = event.offsetX - target.x;
+			var diffY = event.offsetY - target.y;
+			return Math.sqrt((diffX * diffX) + (diffY * diffY));
+		};
+	//Return the appropriate clue as string depending on how far our click  is from the treasure target
+	//change to case statements...
+		var getDistanceHint = function (distance) {
+			if (distance < 0) {
 			return 'Boiling hot!';
-		} else if (distance < 20) {
+			} else if (distance < 20) {
 			return 'Really hot';
-		} else if (distance < 40) {
+			} else if (distance < 40) {
 			return 'Hot';
-		} else if (distance < 80) {
+			} else if (distance < 80) {
 			return 'Warm';
-		} else if (distance < 160) {
+			} else if (distance < 160) {
 			return 'Cold';
-		} else if (distance < 320) {
+			} else if (distance < 320) {
 			return 'Really cold';
-		} else {
+			} else {
 			return 'Freezing!';
-		}
-	};
-	
-	var width = 400;
-	var height = 400;
-	var clicks = 0;
-	var clicksLeft = 80 - clicks;
+			}
+		};
 
-	var target = {
-		x: getRandomNumber(width),
-		y: getRandomNumber(height)
-	};
-//Our click handler function will only run when we click unlike setInterval or timeOut
-	$("#map").click(function (event) {
-		//keep track of clicks with counter var
-		clicks++;
-		//call our distance functions to find our distance from target and then return string in html
-		var distance = getDistance(event, target);
-		var distanceHint = getDistanceHint(distance);
-		$("#distance").text(distanceHint);
-		//show how many clicks you have left before game over
-		$("#clicksLeft").text(clicksLeft);
-		//End game if you cannot find treasure within 3 clicks
-		if (clicks > 80) {
-			alert("Game over");
-		}
-		//Check if player won; we're letting them have a margin of error of 8 :)
-		if (distance < 8) {
-			alert('Found the treasure in ' + clicks + ' clicks!');
-		}
-	});
+		var width = 400;
+		var height = 400;
+		var clicks = 0;
+		var clicksLeft = 80 - clicks;
+
+		var target = {
+			x: getRandomNumber(width),
+			y: getRandomNumber(height)
+		};
+	//Our click handler function will only run when we click unlike setInterval or timeOut
+		$("#map").click(function (event) {
+	//keep track of clicks with counter var
+			clicks++;
+	//call our distance functions to find our distance from target and then return string in html
+			var distance = getDistance(event, target);
+			var distanceHint = getDistanceHint(distance);
+			$("#distance").text(distanceHint);
+	//show how many clicks you have left before game over
+			$("#clicksLeft").text(clicksLeft);
+	//End game if you cannot find treasure within 3 clicks
+			if (clicks > 80) {
+				alert("Game over");
+			}
+	//Check if player won; we're letting them have a margin of error of 8 :)
+			if (distance < 8) {
+				alert('Found the treasure in ' + clicks + ' clicks!');
+			}
+		});
 	</script>
 </body>
 </html>

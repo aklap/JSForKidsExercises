@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Interactive programming</title>
+</head>
+
+<!-- Animate an HTML element using a js script
+ -->	<body>
+		<h1 id="heading">Hello world!</h1>
+
+		<!-- get access to jquery library using a script tag -->
+		<script src="https://code.jquery.com/jquery-2.1.0.js"></script>
+		<!-- Open console in browser to see the script output correctly!! -->
+		<script>
+		$(document).ready(function () {
+			var leftOffset = 0;
+			var topOffset = 0;
+
+			var moveMe = function () {
+				$('h1').offset({left: leftOffset});
+				$('h1').offset({top: topOffset});
+
+				if(leftOffset < 20 && topOffset===0) {
+					leftOffset++;
+				}
+
+				if(leftOffset === 20 && topOffset===0) {
+					topOffset++;
+				}
+
+				if (topOffset === 20 && leftOffset ===20) {
+					leftOffset--;
+				}
+
+				if (topOffset ===20 && leftOffset){
+					topOffset++;
+				}
+			}
+			// setInterval(moveMe, 30);
+		});
+			
+		
+
+		</script>
+</body>
+</html>

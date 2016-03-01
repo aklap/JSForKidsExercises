@@ -4,30 +4,30 @@
   <title>Bootleg MSPaint</title>
 </head>
 <body>
-  <canvas id="canvas" width="1200" height="800"></canvas>
-  <script src="https://code.jquery.com/jquery-2.1.0.js"></script>
-  <script>
-    var canvas = document.getElementById("canvas");
-    var ctx = canvas.getContext('2d');
+    <canvas id="canvas" width="1200" height="800"></canvas>
+    <script src="https://code.jquery.com/jquery-2.1.0.js"></script>
+    <script>
+        var canvas = document.getElementById("canvas");
+        var ctx = canvas.getContext('2d');
 
-    ctx.strokeStyle = "Turquoise";
+        ctx.strokeStyle = "Turquoise";
 
-    var circle = function (x, y, radius, fillCircle) {
-      ctx.lineWidth = 4;
-      ctx.beginPath();
-      ctx.arc(x, y, radius, 0, Math.PI*2, false);
-      ctx.stroke();
+        var circle = function (x, y, radius, fillCircle) {
+            ctx.lineWidth = 4;
+            ctx.beginPath();
+            ctx.arc(x, y, radius, 0, Math.PI*2, false);
+            ctx.stroke();
 
-      if (fillCircle === true) {
-        for (var i = 1; i <= radius; i++) {
-        circle(x, y, i);
-        }
-      }
-    };
+            if (fillCircle === true) {
+                for (var i = 1; i <= radius; i++) {
+                circle(x, y, i);
+                }
+            }
+        };
 
-    $("#canvas").mousemove(function (event) {
-      circle(event.pageX, event.pageY, 3, true);
-    });
-  </script>
+        $("#canvas").mousemove(function (event) {
+            circle(event.pageX, event.pageY, 3, true);
+        });
+    </script>
 </body>
 </html>

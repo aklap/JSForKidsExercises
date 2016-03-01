@@ -1,199 +1,199 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Canvas</title>
+    <title>Canvas</title>
 </head>
 <body>
-	<canvas id="canvas" width="1200" height="800"></canvas>
-	<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script> -->
-	<script>
-	var canvas = document.getElementById("canvas");
-	//the context is a js object w/all methods and props
-	//2d means we want a 2 dimensional drawing
-	var ctx = canvas.getContext('2d');
-	//Each section of code is an exercise. Uncomment each section to see code run on web page.
+    <canvas id="canvas" width="1200" height="800"></canvas>
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script> -->
+    <script>
+    var canvas = document.getElementById("canvas");
+    //the context is a js object w/all methods and props
+    //2d means we want a 2 dimensional drawing
+    var ctx = canvas.getContext('2d');
+    //Each section of code is an exercise. Uncomment each section to see code run on web page.
 
-	// ctx.fillRect(0, 0, 10, 10);
-	// draw a chain of canvases diagonally
-	// for (var i = 0; i < 8; i++) {
-	// 	ctx.fillRect(i*10, i*10, 10, 10);
-	// };
+    // ctx.fillRect(0, 0, 10, 10);
+    // draw a chain of canvases diagonally
+    // for (var i = 0; i < 8; i++) {
+    //  ctx.fillRect(i*10, i*10, 10, 10);
+    // };
 
-	// //little robot 
-	// ctx.fillRect(10, 10, 20, 20);
-	// ctx.fillRect(18, 30, 5, 10);
-	// ctx.fillRect(0, 40, 40, 5);
-	// ctx.fillRect(8, 45, 25, 25);
-	// ctx.fillRect(8, 70, 5, 15);
-	// ctx.fillRect(28, 70, 5, 15);
+    // //little robot 
+    // ctx.fillRect(10, 10, 20, 20);
+    // ctx.fillRect(18, 30, 5, 10);
+    // ctx.fillRect(0, 40, 40, 5);
+    // ctx.fillRect(8, 45, 25, 25);
+    // ctx.fillRect(8, 70, 5, 15);
+    // ctx.fillRect(28, 70, 5, 15);
 
-	// //fillStyle changes color of ctx
-	// ctx.fillStyle = "Red";
-	// ctx.fillRect(0, 0, 100, 100);
+    // //fillStyle changes color of ctx
+    // ctx.fillStyle = "Red";
+    // ctx.fillRect(0, 0, 100, 100);
 
-	// //try out different colors by name
-	// ctx.fillStyle = "LightPink";
-	// ctx.fillRect(0, 0, 50, 80);
-	// ctx.fillStyle = "Indigo";
-	// ctx.fillRect(50, 0, 50, 80);
-	// ctx.fillStyle = "LightSkyBlue";
-	// ctx.fillRect(100, 0, 50, 80);
+    // //try out different colors by name
+    // ctx.fillStyle = "LightPink";
+    // ctx.fillRect(0, 0, 50, 80);
+    // ctx.fillStyle = "Indigo";
+    // ctx.fillRect(50, 0, 50, 80);
+    // ctx.fillStyle = "LightSkyBlue";
+    // ctx.fillRect(100, 0, 50, 80);
 
-	// //try out stroke
-	// ctx.strokeStyle = 'DeepPink';
-	// ctx.lineWidth = 4;
-	// ctx.strokeRect(10, 10, 100, 20);
+    // //try out stroke
+    // ctx.strokeStyle = 'DeepPink';
+    // ctx.lineWidth = 4;
+    // ctx.strokeRect(10, 10, 100, 20);
 
-	// //try to draw paths
-	// ctx.strokeStyle = "Turquoise";
-	// ctx.lineWidth = 4;
-	// ctx.beginPath();
-	// ctx.moveTo(10, 10);
-	// ctx.lineTo(60, 60);
-	// ctx.moveTo(60, 10);
-	// ctx.lineTo(10, 60);
-	// ctx.stroke();
+    // //try to draw paths
+    // ctx.strokeStyle = "Turquoise";
+    // ctx.lineWidth = 4;
+    // ctx.beginPath();
+    // ctx.moveTo(10, 10);
+    // ctx.lineTo(60, 60);
+    // ctx.moveTo(60, 10);
+    // ctx.lineTo(10, 60);
+    // ctx.stroke();
 
-	// //draw a little person
-	// ctx.strokeStyle = "SlateGrey"
-	// ctx.lineWidth = 4;
-	// ctx.strokeRect(10, 10, 20, 20);
-	// ctx.beginPath();
-	// ctx.moveTo(20, 30);
-	// ctx.lineTo(20, 65);
-	// ctx.moveTo(20, 64);
-	// ctx.lineTo(5, 90);
-	// ctx.moveTo(20, 64);
-	// ctx.lineTo(35, 90);
-	// ctx.moveTo(20, 50);
-	// ctx.lineTo(40, 40);
-	// ctx.moveTo(20, 50);
-	// ctx.lineTo(1, 40);
-	// ctx.stroke();
+    // //draw a little person
+    // ctx.strokeStyle = "SlateGrey"
+    // ctx.lineWidth = 4;
+    // ctx.strokeRect(10, 10, 20, 20);
+    // ctx.beginPath();
+    // ctx.moveTo(20, 30);
+    // ctx.lineTo(20, 65);
+    // ctx.moveTo(20, 64);
+    // ctx.lineTo(5, 90);
+    // ctx.moveTo(20, 64);
+    // ctx.lineTo(35, 90);
+    // ctx.moveTo(20, 50);
+    // ctx.lineTo(40, 40);
+    // ctx.moveTo(20, 50);
+    // ctx.lineTo(1, 40);
+    // ctx.stroke();
 
-	// //try to draw a circle
-	// ctx.lineWidth = 2;
-	// ctx.strokeStyle = "Green";
+    // //try to draw a circle
+    // ctx.lineWidth = 2;
+    // ctx.strokeStyle = "Green";
 
-	// //ctx.beginPath();
-	// quarter circle arc
-	// ctx.arc(50, 50, 20, 0, Math.PI / 2, false);
+    // //ctx.beginPath();
+    // quarter circle arc
+    // ctx.arc(50, 50, 20, 0, Math.PI / 2, false);
 
-	// //demi-circle arc
-	// ctx.arc(100, 50, 20, 0, Math.PI, false);
+    // //demi-circle arc
+    // ctx.arc(100, 50, 20, 0, Math.PI, false);
 
-	// //full circle
-	// ctx.arc(150, 50, 20, 0, Math.PI * 2, false);
-	// ctx.stroke();
+    // //full circle
+    // ctx.arc(150, 50, 20, 0, Math.PI * 2, false);
+    // ctx.stroke();
 
-	// //draw many circles with a function
-	// var circle = function (x, y, radius) {
-	// 	ctx.beginPath();
-	// 	ctx.arc(x, y, radius, 0, Math.PI*2, false);
-	// 	ctx.stroke();
-	// };
+    // //draw many circles with a function
+    // var circle = function (x, y, radius) {
+    //  ctx.beginPath();
+    //  ctx.arc(x, y, radius, 0, Math.PI*2, false);
+    //  ctx.stroke();
+    // };
 
-	// // ctx.strokeStyle = "Turquoise";
-	// circle(100, 100, 10);
+    // // ctx.strokeStyle = "Turquoise";
+    // circle(100, 100, 10);
 
-	// // ctx.strokeStyle = "Orange";
-	// circle(100, 100, 20);
+    // // ctx.strokeStyle = "Orange";
+    // circle(100, 100, 20);
 
-	// // ctx.strokeStyle = "Purple";
-	// circle(100, 100, 30);
+    // // ctx.strokeStyle = "Purple";
+    // circle(100, 100, 30);
 
-	// //draw many circles and fill them with color
-	// var circle = function (x, y, radius, fillCircle) {
-	// 	ctx.beginPath();
-	// 	ctx.arc(x, y, radius, 0, Math.PI*2, false);
-	// 	ctx.stroke();
+    // //draw many circles and fill them with color
+    // var circle = function (x, y, radius, fillCircle) {
+    //  ctx.beginPath();
+    //  ctx.arc(x, y, radius, 0, Math.PI*2, false);
+    //  ctx.stroke();
 
-	// 	if (fillCircle == true) {
-	// 		for (var i = 1; i <= radius; i++) {
-	// 		circle(x, y, i);
-	// 		};
-	// 	}
-	// };
+    //  if (fillCircle == true) {
+    //      for (var i = 1; i <= radius; i++) {
+    //      circle(x, y, i);
+    //      };
+    //  }
+    // };
 
-	// //draw and fill a circle with color
-	// ctx.strokeStyle = "Purple";
-	// circle(100, 100, 30, true);
+    // //draw and fill a circle with color
+    // ctx.strokeStyle = "Purple";
+    // circle(100, 100, 30, true);
 
-	// //draw a snowman
-	// ctx.strokeStyle = "DarkGray";
-	// //snowman head
-	// circle(100, 50, 20, false);
-	// //left eye
-	// circle(90, 50, 2, true);
-	// // //right eye
-	// circle(110, 50, 2, true);
-	// //smile
-	// ctx.beginPath();
-	// ctx.arc(100, 62, 2, 0, Math.PI, false);
-	// ctx.stroke();
-	// //torso
-	// circle(100, 100, 30, false);
-	// //button 1
-	// circle(100, 90, 2, true);
-	// //button 2
-	// circle(100, 100, 2, true);
-	// //button 3
-	// circle(100, 110, 2, true);
-	// //nose
-	// ctx.strokeStyle = "Orange";
-	// circle(100, 55, 2, true);
+    // //draw a snowman
+    // ctx.strokeStyle = "DarkGray";
+    // //snowman head
+    // circle(100, 50, 20, false);
+    // //left eye
+    // circle(90, 50, 2, true);
+    // // //right eye
+    // circle(110, 50, 2, true);
+    // //smile
+    // ctx.beginPath();
+    // ctx.arc(100, 62, 2, 0, Math.PI, false);
+    // ctx.stroke();
+    // //torso
+    // circle(100, 100, 30, false);
+    // //button 1
+    // circle(100, 90, 2, true);
+    // //button 2
+    // circle(100, 100, 2, true);
+    // //button 3
+    // circle(100, 110, 2, true);
+    // //nose
+    // ctx.strokeStyle = "Orange";
+    // circle(100, 55, 2, true);
 
-	// //draw a snowman with a function
-	// var drawSnowman = function (x, y) {
-	// 	ctx.strokeStyle = "DarkGray";
-	// //snowman head
-	// 	circle(x, y, 20, false);
-	// //left eye
-	// 	circle(x-10, y, 2, true);
-	// //right eye
-	// 	circle(x+10, y, 2, true);
-	// //smile
-	// 	ctx.beginPath();
-	// 	ctx.arc(x, y+12, 2, 0, Math.PI, false);
-	// 	ctx.stroke();
-	// //torso
-	// 	circle(x, y+50, 30, false);
-	// //button 1
-	// 	circle(x, y+40, 2, true);
-	// //button 2
-	// 	circle(x, y+50, 2, true);
-	// //button 3
-	// 	circle(x, y+60, 2, true);
-	// //nose
-	// 	ctx.strokeStyle = "Orange";
-	// 	circle(x, y+5, 2, true);
-	// }
+    // //draw a snowman with a function
+    // var drawSnowman = function (x, y) {
+    //  ctx.strokeStyle = "DarkGray";
+    // //snowman head
+    //  circle(x, y, 20, false);
+    // //left eye
+    //  circle(x-10, y, 2, true);
+    // //right eye
+    //  circle(x+10, y, 2, true);
+    // //smile
+    //  ctx.beginPath();
+    //  ctx.arc(x, y+12, 2, 0, Math.PI, false);
+    //  ctx.stroke();
+    // //torso
+    //  circle(x, y+50, 30, false);
+    // //button 1
+    //  circle(x, y+40, 2, true);
+    // //button 2
+    //  circle(x, y+50, 2, true);
+    // //button 3
+    //  circle(x, y+60, 2, true);
+    // //nose
+    //  ctx.strokeStyle = "Orange";
+    //  circle(x, y+5, 2, true);
+    // }
 
-	// // drawSnowman(100, 300);
-	// var drawPoints = function (points) {
-	// 	if (points.length < 2) {
-	// 		alert("You don't have enough points to draw anything");
-	// 	} else {
+    // // drawSnowman(100, 300);
+    // var drawPoints = function (points) {
+    //  if (points.length < 2) {
+    //      alert("You don't have enough points to draw anything");
+    //  } else {
 
-	// 	for(var i = 0; i < points.length; i++) {
-	// 		ctx.lineWidth = 2;
-	// 		ctx.beginPath();
-	// 		ctx.moveTo(points[i][0], points[i][1]);
-	// 		ctx.lineTo(points[i+1][0], points[i+1][1]);
+    //  for(var i = 0; i < points.length; i++) {
+    //      ctx.lineWidth = 2;
+    //      ctx.beginPath();
+    //      ctx.moveTo(points[i][0], points[i][1]);
+    //      ctx.lineTo(points[i+1][0], points[i+1][1]);
 
-	// 		if (i === points.length-1) {
-	// 			ctx.moveTo(points[0][0], points[0][1]);
-	// 			ctx.lineTo(points[i][0], points[i][1]);
-	// 		}
-	// 		ctx.stroke();
-	// 		}
-	// 	}
-	// };
+    //      if (i === points.length-1) {
+    //          ctx.moveTo(points[0][0], points[0][1]);
+    //          ctx.lineTo(points[i][0], points[i][1]);
+    //      }
+    //      ctx.stroke();
+    //      }
+    //  }
+    // };
 
-	// var example = [[50, 50], [50, 100], [100, 100], [100, 50], [50, 50]];
-	// var example2 = [[50, 50], [50, 100], [25, 120], [100, 50], [70, 90], [100, 90], [70, 120]];
-	// drawPoints(example);
-	// drawPoints(example2);
-	</script>
+    // var example = [[50, 50], [50, 100], [100, 100], [100, 50], [50, 50]];
+    // var example2 = [[50, 50], [50, 100], [25, 120], [100, 50], [70, 90], [100, 90], [70, 120]];
+    // drawPoints(example);
+    // drawPoints(example2);
+    </script>
 </body>
 </html>

@@ -60,7 +60,6 @@
 	$("#map").click(function (event) {
 		//keep track of clicks with counter var
 		clicks++;
-
 		//call our distance functions to find our distance from target and then return string in html
 		var distance = getDistance(event, target);
 		var distanceHint = getDistanceHint(distance);
@@ -76,7 +75,6 @@
 			alert('Found the treasure in ' + clicks + ' clicks!');
 		}
 	});
-
 	</script>
 </body>
 </html>

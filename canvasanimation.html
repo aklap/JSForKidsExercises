@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Canvas Animation</title>
+    </head>
+<body>
+    <canvas id="canvas" width="500" height="300"></canvas>
+    <script>
+        var canvas = document.getElementById('canvas');
+        var ctx = canvas.getContext('2d');
+//move rectangle across the canvas
+        // var position = 0;
+
+        // setInterval(function () {
+        //     ctx.clearRect(0, 0, 200, 200);
+        //     ctx.fillRect(position, 0, 20, 20);
+
+        //     position++;
+        //     if (position > 200) {
+        //         position = 0;
+        //     }
+        // }, 30)
+
+//make rectangle grow
+        // var size = 0;
+
+        // setInterval(function () {
+        //     ctx.clearRect(0, 0, 200, 200);
+        //     ctx.fillRect(0, 0, size, size);
+
+        //     size++;
+        //     if (size > 200) {
+        //         size = 0;
+        //     }
+        // }, 30);
+//make a bee buzz around the web page
+    // var x = 100;
+    // var y = 100;
+//create circle function since our 'bee' will consist of circles
+        // var circle = function (x, y, radius, fillCircle) {
+        //     ctx.beginPath();
+        //     ctx.arc(x, y, radius, 0, Math.PI*2, false);
+        //     if(fillCircle === true) {
+        //         ctx.fill();
+        //     } else {
+        //         ctx.stroke();
+        //     };
+        // };
+//create a function to draw our bee
+        // var drawBee = function (x, y) {
+        //     ctx.lineWidth = 2;
+        //     ctx.strokeStyle = "Black";
+        //     ctx.fillStyle = "Gold";
+        //     //body
+        //     circle(x, y, 8, true);
+        //     //body outline
+        //     circle(x, y, 8, false);
+        //     //left wing
+        //     circle(x - 5, y - 11, 5, false);
+        //     //right wing
+        //     circle(x + 5, y - 11, 5, false);
+        //     //left eye
+        //     circle(x - 2, y - 1, 2, false);
+        //     //right eye
+        //     circle(x + 2, y - 1, 2, false);
+        // };
+
+//create a function to change bee location randomly
+    
+    // var changeLocation = function (coordinate) {
+    //     var offset = Math.random() * 4 -2;
+    //     coordinate +=offset;
+
+    //     if (coordinate > 200) {
+    //         coordinate = 200;
+    //     }
+        
+    //     if (coordinate < 0) {
+    //         coordinate = 0;
+    //     }
+
+    //     return coordinate;
+    // };
+
+    // setInterval(function () {
+    //     ctx.clearRect(0, 0, 200, 200);
+
+    //     drawBee(x, y);
+    //     x = changeLocation(x);
+    //     y = changeLocation(y);
+
+    //     ctx.strokeRect(0, 0, 200, 200);
+    // }, 30);
+
+    //bounce a ball
+        //create ball object constructor function with coordinates and speed properties
+        var Ball = function () {
+            //when page loads will draw ball in center of canvas
+            //x and y will change linearly
+            this.x = 100;
+            this.y = 100;
+            //horizontal speed, return a number in a range inclusive
+            this.xSpeed = Math.floor(Math.random()*(5-(-5)+1)) + -5;
+            //vertical speed
+            this.ySpeed = Math.floor(Math.random()*(5-(-5)+1)) + -5;
+            this.color = colors[Math.floor(Math.random()*(6-(0)+1)+0)];
+        };
+
+        //create draw method to our Ball object
+        //step 1 create a function to draw the ball, a circle
+        var circle = function (x, y, radius, fillCircle, color) {
+            ctx.beginPath();
+            ctx.arc(x, y, radius, 0, Math.PI*2, false);
+            if (fillCircle) {
+                ctx.fillStyle = color;
+                ctx.fill();
+            } else {
+                ctx.stroke();
+            }
+        };
+        //step 2 call above circle func in our method draw
+        Ball.prototype.draw = function () {
+            circle(this.x, this.y, 3, true, this.color);
+        };
+        //create a move method to change position of ball on canvas
+        Ball.prototype.move = function () {
+            this.x += this.xSpeed;
+            this.y += this.ySpeed;
+        };
+        //create a method to check if we hit a wall, if so bounce the ball away
+        Ball.prototype.bounceCheck = function () {
+            //if the ball x or y coordinates match any of the wall coordinates, negate the ball x or y
+            //this will point the ball in the opposite direction x or y 
+            if (this.x < 0 || this.x > width) {
+                this.xSpeed = -this.xSpeed;
+            }
+            
+            if (this.y < 0 || this.y > height) {
+                this.ySpeed = -this.ySpeed;
+            }
+        };
+        
+        var width = canvas.width;
+        var height = canvas.height;
+        var balls = [];
+        var colors = ["Red", "Orange", "Yellow", "Green", "Blue", "Purple"];
+        
+        // create many balls
+        for (var i = 0; i<=10; i++) {
+            var ball = new Ball;
+            balls.push(ball);
+        }
+
+        //our 'run' method
+        setInterval(function () {
+        width = 500;
+        height = 300;
+            //clear canvas
+            ctx.clearRect(0, 0, width, height);
+            for (i=0; i<balls.length;i++) {
+                //create a new ball object
+                //draw ball
+                balls[i].draw();
+                //move
+                balls[i].move();
+                //check for collision with walls
+                balls[i].bounceCheck();
+                //redraw canvas as quadrilateral
+            }
+                ctx.strokeRect(0, 0, width, height);
+        }, 30);
+    </script>   
+</body>
+</html>

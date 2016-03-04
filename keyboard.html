@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Keyboard input</title>
+    </head>
+    <body>
+        <canvas id="canvas" width="400" height="400"></canvas>
+        <script src="https://code.jquery.com/jquery-2.1.0.js"></script>
+        <script>
+            // //explore keycodes in the console
+            // $("body").keydown(function (event) {
+            //     console.log(event.keyCode);
+            // });
+            // var keyNames = {
+            //     32: "space",
+            //     37: "left",
+            //     38: "up",
+            //     39: "right",
+            //     40: "down"
+            // };
+
+            // $("body").keydown(function (event) {
+            //     console.log(keyNames[event.keyCode]);
+            // });
+            var canvas = document.getElementById("canvas");
+            var ctx = canvas.getContext("2d");
+
+            ctx.strokeStyle = "Turquoise";
+
+            var width = canvas.width;
+            var height = canvas.height;
+            //create a circle func
+            var circle = function (x, y, radius, fillCircle) {
+                ctx.beginPath();
+                ctx.arc(x, y, radius, 0, Math.PI*2, false);
+                if (fillCircle) {
+                    ctx.fill();
+                } else {
+                    ctx.stroke();
+                }
+            }; 
+
+            //create a ball constructor
+            var Ball = function () {
+                this.x = width/2;
+                this.y = height/2;
+                this.xSpeed = 5;
+                this.ySpeed = 0;
+                this.speed = 5;
+                this.radius = 10;
+            };
+            //create a move method for ball obj
+            Ball.prototype.move = function () {
+                this.x += this.xSpeed;
+                this.y += this.ySpeed;
+
+                if (this.x < 0) {
+                    this.x = width;
+                } else if (this.x > width) {
+                    this.x = 0;
+                } else if (this.y < 0) {
+                    this.y = height; 
+                } else if (this.y > height) {
+                    this.y = 0;
+                }
+            };
+            //create draw our ball 
+            Ball.prototype.draw = function () {
+                circle(this.x, this.y, this.radius, true);
+            };
+            //create method to set direction of the ball
+            Ball.prototype.setDirection = function (key) {
+                if (key === "up") {
+                    this.xSpeed = 0;
+                    this.ySpeed = -this.speed;
+                } else if (key === "down") {
+                    this.xSpeed = 0;
+                    this.ySpeed = this.speed;
+                } else if (key === "left") {
+                    this.xSpeed = -this.speed;
+                    this.ySpeed = 0;
+                } else if (key === "right") {
+                    this.xSpeed = this.speed;
+                    this.ySpeed = 0;
+                } else if (key === "stop") {
+                    this.xSpeed = 0;
+                    this.ySpeed = 0;
+                }
+            };
+
+            Ball.prototype.setSpeed = function (key) {
+                if (key === "faster") {
+                    this.xSpeed += 2;
+                    this.ySpeed +=2;
+                } else if (key === "slower") {
+                    this.xSpeed -= 2;
+                    this.ySpeed -=2;
+                };
+            };
+
+            Ball.prototype.setSize = function (key) {
+                if (key === "smaller" && this.radius > 5) {
+                    this.radius /=2;                    
+                } else if (key === "larger" && this.radius < 50) {
+                    this.radius *= 2;
+                };
+            };
+
+            //if ball touches one of the walls send it in opposite direction
+            Ball.prototype.bounceCheck = function () {
+                if (this.x === width) {
+                    this.xSpeed = -this.xSpeed;
+                }
+
+                if (this.y === height) {
+                    this.ySpeed = -this.ySpeed;
+                };
+            };
+            var ball = new Ball();
+
+            var keyActions = {
+                32: "stop",
+                37: "left",
+                38: "up",
+                39: "right",
+                40: "down",
+                90: "faster",
+                88: "slower",
+                67: "smaller",
+                86: "larger"
+            };
+            
+            $("body").keydown(function (event) {
+                var key = keyActions[event.keyCode];
+                ball.setDirection(key);
+                ball.setSize(key);
+                ball.setSpeed(key);
+            });
+
+            setInterval(function () {
+                ctx.clearRect(0, 0, width, height);
+                
+                ball.draw();
+                ball.move();
+                ball.bounceCheck();
+                
+                ctx.strokeRect(0, 0, width, height);
+            }, 30);
+        </script>
+    </body>
+</html>
